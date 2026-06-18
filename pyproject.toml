@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "uristepperedge"
+version = "0.1.0"
+description = "HTTP edge runtime for stepper:// on device hosts"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+dependencies = ["uristepper>=0.1.0", "uricontrol>=0.1.8"]
+
+[project.scripts]
+uristepper-edge = "uristepperedge.cli:main"
+
+[tool.uv.sources]
+uristepper = { path = "../uristepper", editable = true }
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["uristepperedge*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
